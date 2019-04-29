@@ -30,7 +30,6 @@ public class TodoListController {
 
     @PostMapping("/todos")
     public ResponseEntity<Todo> createTodo(@Valid @RequestBody Todo todo) {
-        todo.setCompleted(false);
         return createdOrNoContent(todoListFacade.addTodo(todo));
     }
 
@@ -40,24 +39,14 @@ public class TodoListController {
 
     }
 
-    /*@PutMapping(value = "/todos/{id}")
-    public ResponseEntity<Todo> updateTodo(@PathVariable("id") String id, @Valid @RequestBody Todo todo) {
-        return todoListRepository.findById(id)
-                .map(todoData -> {
-                    todoData.setTask(todo.getTask());
-                    todoData.setCompleted(todo.getCompleted());
-                    Todo updatedtodo = todoListRepository.save(todoData);
-                    return ResponseEntity.ok().body(updatedtodo);
-                }).orElse(ResponseEntity.notFound().build());
+    @PutMapping(value = "/todos")
+    public ResponseEntity<Todo> updateTodo(@Valid @RequestBody Todo todo) {
+        return okOrNotFound(todoListFacade.updateTodo(todo));
     }
 
     @DeleteMapping(value = "/todos/{id}")
-    public ResponseEntity<?> deleteTodo(@PathVariable("id") String id) {
-        return todoListRepository.findById(id)
-                .map(todo -> {
-                    todoListRepository.deleteById(id);
-                    return ResponseEntity.ok().build();
-                }).orElse(ResponseEntity.notFound().build());
-    }*/
+    public ResponseEntity<Optional<?>> deleteTodo(@PathVariable("id") String id) {
+        return okOrNotFound(todoListFacade.removeTodo(id));
+    }
 
 }

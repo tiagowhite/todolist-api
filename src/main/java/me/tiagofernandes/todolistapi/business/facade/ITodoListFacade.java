@@ -12,9 +12,9 @@ public interface ITodoListFacade {
 
     Todo addTodo(Todo todo);
 
-    Todo updateTodo(String id);
+    Todo updateTodo(Todo todo);
 
-    Todo removeTodo(String id);
+    Optional<Todo> removeTodo(String id);
 
     Todo setAsCompleted(String id, Boolean completed);
 

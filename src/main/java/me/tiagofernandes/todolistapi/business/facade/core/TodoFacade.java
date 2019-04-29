@@ -23,23 +23,32 @@ public class TodoFacade implements ITodoListFacade {
 
     @Override
     public Optional<Todo> findById(String id) {
-      return todoListRepository.findById(id);
+        return todoListRepository.findById(id);
     }
 
 
     @Override
     public Todo addTodo(Todo todo) {
-        return null;
+        return todoListRepository.save(todo);
     }
 
     @Override
-    public Todo updateTodo(String id) {
-        return null;
+    public Todo updateTodo(Todo todo) {
+        return todoListRepository.save(todo);
+//                .map(todoData -> {
+//                    todoData.setTask(todo.getTask());
+//                    todoData.setCompleted((todo.getCompleted()));
+//                    return todoListRepository.save(todoData);
+//                });
     }
 
     @Override
-    public Todo removeTodo(String id) {
-        return null;
+    public Optional<Todo> removeTodo(String id) {
+        return todoListRepository.findById(id)
+                .map(todo -> {
+                    todoListRepository.deleteById(id);
+                    return null;
+                });
     }
 
     @Override

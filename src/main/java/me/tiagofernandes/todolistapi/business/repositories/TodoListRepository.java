@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface TodoListRepository extends MongoRepository<Todo, String> {
-    public Optional<Todo> findById(String id);
+    Optional<Todo> findById(String id);
 }
