@@ -1,5 +1,6 @@
 package me.tiagofernandes.todolistapi.business.facade.core;
 
+import me.tiagofernandes.todolistapi.business.exception.BusinessException;
 import me.tiagofernandes.todolistapi.business.facade.ITodoListFacade;
 import me.tiagofernandes.todolistapi.business.repositories.TodoListRepository;
 import me.tiagofernandes.todolistapi.models.Todo;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.apache.logging.log4j.util.Strings.isBlank;
 
 @Component
 public class TodoFacade implements ITodoListFacade {
@@ -34,31 +37,28 @@ public class TodoFacade implements ITodoListFacade {
 
     @Override
     public Todo updateTodo(Todo todo) {
+        if (isBlank(todo.getTask())) {
+            throw new BusinessException("Titulo nao encontrado");
+        }
         return todoListRepository.save(todo);
-//                .map(todoData -> {
-//                    todoData.setTask(todo.getTask());
-//                    todoData.setCompleted((todo.getCompleted()));
-//                    return todoListRepository.save(todoData);
-//                });
     }
 
     @Override
     public Optional<Todo> removeTodo(String id) {
         return todoListRepository.findById(id)
                 .map(todo -> {
-                    todoListRepository.deleteById(id);
-                    return null;
+                    todoListRepository.delete(todo);
+                    return todo;
                 });
     }
 
-    @Override
-    public Todo setAsCompleted(String id, Boolean completed) {
-        return null;
+    public Optional<Todo> setAsCompleted(String id, Boolean completed) {
+        return todoListRepository.findById(id)
+                .map(todo -> {
+                    todo.setCompleted(completed);
+                    return todoListRepository.save(todo);
+                });
     }
 
-    @Override
-    public Todo setAsIncomplete(String id, Boolean completed) {
-        return null;
-    }
 
 }

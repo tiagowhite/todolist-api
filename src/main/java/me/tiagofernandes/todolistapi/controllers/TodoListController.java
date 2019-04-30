@@ -1,6 +1,7 @@
 package me.tiagofernandes.todolistapi.controllers;
 
 import me.tiagofernandes.todolistapi.business.facade.ITodoListFacade;
+import me.tiagofernandes.todolistapi.controllers.dto.DtoCompleted;
 import me.tiagofernandes.todolistapi.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,6 +43,11 @@ public class TodoListController {
     @PutMapping(value = "/todos")
     public ResponseEntity<Todo> updateTodo(@Valid @RequestBody Todo todo) {
         return okOrNotFound(todoListFacade.updateTodo(todo));
+    }
+
+    @PutMapping(value = "/todos/setAsCompleted")
+    public ResponseEntity<Optional<Todo>> setAsCompleted(@RequestBody DtoCompleted completed) {
+        return okOrNotFound(todoListFacade.setAsCompleted(completed.getId(), completed.getCompleted()));
     }
 
     @DeleteMapping(value = "/todos/{id}")

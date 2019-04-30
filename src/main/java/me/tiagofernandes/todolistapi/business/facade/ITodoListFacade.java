@@ -16,7 +16,6 @@ public interface ITodoListFacade {
 
     Optional<Todo> removeTodo(String id);
 
-    Todo setAsCompleted(String id, Boolean completed);
+    Optional<Todo> setAsCompleted(String id, Boolean completed);
 
-    Todo setAsIncomplete(String id, Boolean completed);
 }
