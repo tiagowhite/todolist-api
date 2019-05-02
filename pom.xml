@@ -2,23 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+
+
     <groupId>me.tiagofernandes</groupId>
     <artifactId>todolist-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <name>todolist-api</name>
     <description>Todo List API</description>
+
+    <licenses>
+        <license>
+            <name>MIT license</name>
+            <url>LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Tiago de A. Fernandes</name>
+            <email>tiagowhite@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://git@github.com:tiagowhite/todolist-api.git</connection>
+        <url>https://github.com/tiagowhite/todolist-api</url>
+        <developerConnection>scm:git:git://git@github.com:tiagowhite/todolist-api.git<</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <dependencies>
         <dependency>
