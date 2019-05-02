@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 @RepositoryRestResource(path = "todos", collectionResourceRel = "todos", itemResourceRel = "todo")
-public interface TodoListRepository extends MongoRepository<Todo, String> {
+public interface ITodoListRepository extends MongoRepository<Todo, String> {
     Optional<Todo> findById(String id);
 }

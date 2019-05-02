@@ -30,7 +30,6 @@ public class Todo {
         super();
     }
 
-
     public String getId() {
         return id;
     }
