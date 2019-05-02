@@ -26,13 +26,6 @@
         </developer>
     </developers>
 
-    <scm>
-        <connection>scm:git:git://git@github.com:tiagowhite/todolist-api.git</connection>
-        <url>https://github.com/tiagowhite/todolist-api</url>
-        <developerConnection>scm:git:git://git@github.com:tiagowhite/todolist-api.git<</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
