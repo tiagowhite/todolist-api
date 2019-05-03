@@ -1,8 +1,8 @@
 package me.tiagofernandes.todolistapi.business.repositories;
 
-import me.tiagofernandes.todolistapi.models.Users;
+import me.tiagofernandes.todolistapi.models.User;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface IUserRepository extends MongoRepository<Users, String> {
-    Users findByUsername(String username);
+public interface IUserRepository extends MongoRepository<User, String> {
 }
