@@ -14,9 +14,10 @@ import java.util.Date;
 
 @Service
 public class TokenService {
-    public static final String TOKEN_SECRET = "dXNlcg==";
 
-    String createToken(ObjectId userId) {
+    private static final String TOKEN_SECRET = "dXNlcg==";
+
+    String createToken(String userId) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             return JWT.create()

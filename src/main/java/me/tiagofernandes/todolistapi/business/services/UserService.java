@@ -6,6 +6,8 @@ import me.tiagofernandes.todolistapi.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private IUserRepository userRepository;
@@ -17,8 +19,9 @@ public class UserService {
         this.tokenService = tokenService;
     }
 
-    public User getUser(String userId) {
-        return userRepository.findOne(userId);
+    public Optional<User> getUser(String userId) {
+        return userRepository.findById(userId);
+
     }
 
     public String saveUser(User user) {

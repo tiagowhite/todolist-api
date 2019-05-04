@@ -13,7 +13,7 @@ import org.bson.types.ObjectId;
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-    private ObjectId id;
+    private String id;
     private String name;
     private String email;
     private String password;

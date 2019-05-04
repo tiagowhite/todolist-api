@@ -2,11 +2,11 @@ package me.tiagofernandes.todolistapi.controllers;
 
 import me.tiagofernandes.todolistapi.business.services.UserService;
 import me.tiagofernandes.todolistapi.models.User;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public User getUser(HttpServletRequest request) {
-        String userId = request.getAttribute("userId");
+    public Optional<User> getUser(HttpServletRequest request) {
+        String userId = (String) request.getAttribute("userId");
         return userService.getUser(userId);
     }
 }
